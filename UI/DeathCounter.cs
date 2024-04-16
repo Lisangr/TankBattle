@@ -7,7 +7,6 @@ public class DeathCounter : MonoBehaviour
     public TextMeshProUGUI death_state;
     private void Awake()
     {
-        // Подписываемся на событие смерти объекта
         HealAndDamageEnemy.OnEnemyDeath += IncrementDeathEnemyCount;
     }
     private void Update()
@@ -16,12 +15,10 @@ public class DeathCounter : MonoBehaviour
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
-
     }
     private void IncrementDeathEnemyCount()
     {
         deathEnemyCount+=1;
         death_state.text = deathEnemyCount.ToString();
     }
-
 }

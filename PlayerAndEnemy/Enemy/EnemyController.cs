@@ -41,7 +41,7 @@ public class EnemyController : MonoBehaviour
         if (locations.Count == 0)
             return;
         
-        agent.destination = locations[locationIndex].position;// Устанавливаем пункт назначения для агента
+        agent.destination = locations[locationIndex].position;
         locationIndex = (locationIndex + 1) % locations.Count;
     }
     void InitializePatrolRoute()
@@ -50,14 +50,14 @@ public class EnemyController : MonoBehaviour
         {
             locations.Add(child);
         }
-        // Алгоритм Фишера-Йетса для случайной перестановки точек
+
         for (int i = locations.Count - 1; i > 0; i--)
         {
             int randomIndex = Random.Range(0, i + 1);
             Transform temp = locations[i];
             locations[i] = locations[randomIndex];
             locations[randomIndex] = temp;
-            //дополнительная проверка
+
             if (Vector3.Distance(temp.position, locations[i].position) < 1f)
             {
                 locations.Remove(locations[i]);

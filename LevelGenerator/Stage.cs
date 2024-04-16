@@ -5,7 +5,7 @@ public class Stage : MonoBehaviour
     public Transform begin;
     public Transform end;
 
-    //public Mesh[] blockMashes;
+    //public Mesh[] blockMashes; //if need customise level
 
     private void Start()
     {

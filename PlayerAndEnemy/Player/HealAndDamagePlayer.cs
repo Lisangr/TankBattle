@@ -1,13 +1,13 @@
 using UnityEngine;
 public class HealAndDamagePlayer : MonoBehaviour
 {
-    public int HP; //здоровье
-    public int maxHP; // максимальное здоровье
+    public int HP;
+    public int maxHP;
 
     public delegate void DeathAction();
     public static event DeathAction OnPlayerDeath;
 
-    public void TakeDamage(int damage) //Здоровье - урон
+    public void TakeDamage(int damage)
     {
         HP -= damage;
 
@@ -17,7 +17,7 @@ public class HealAndDamagePlayer : MonoBehaviour
             OnPlayerDeath?.Invoke();
         }
     }
-    public void TakeHeal(int bonusHP) //Здоровье + восстановление
+    public void TakeHeal(int bonusHP)
     {
         HP += bonusHP;
 

@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class TheSun : MonoBehaviour
 {
-    public Transform target; // Ссылка на объект Stage
-    public float rotationSpeed = 5.0f; // Скорость вращения солнца
+    public Transform target;
+    public float rotationSpeed = 5.0f;
 
     public void Awake()
     {
