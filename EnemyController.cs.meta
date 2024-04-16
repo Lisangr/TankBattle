@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 15731e26a1959e743847aca6d27b1ed5
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - player: {fileID: 5578052973944102601, guid: c2ea867dffa26684682d3a78b768af82, type: 3}
+  - patrolRoute: {fileID: 9010337953242501359, guid: 0397d4383a51f214fac7d864bea0e49f, type: 3}
+  - bulet: {fileID: -1265922248975708046, guid: 8467ed57984dcdf449abd9df2b6ebb2a, type: 3}
+  - shootPoint: {instanceID: 0}
+  - life_state: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
