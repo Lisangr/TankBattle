@@ -9,6 +9,7 @@ public class EnemyController : MonoBehaviour
     public Transform player;
     private Transform patrolRoute;
     public Rigidbody bulet;
+    public Rigidbody rb;
     public float speedBullet = 500f;
     public Transform shootPoint;
     public List<Transform> locations;
@@ -27,6 +28,7 @@ public class EnemyController : MonoBehaviour
         patrolRoute = GameObject.Find("PatrolRoute").transform;
         InitializePatrolRoute();
     }
+
     void Update()
     {
         if (agent.isOnNavMesh && agent.remainingDistance < 2f && !agent.pathPending)
@@ -36,6 +38,7 @@ public class EnemyController : MonoBehaviour
 
         life_state.text = healAndDamage.HP.ToString();
     }
+
     void MoveToNextPatrolLocation()
     {
         if (locations.Count == 0)
@@ -43,7 +46,11 @@ public class EnemyController : MonoBehaviour
 
         agent.destination = locations[locationIndex].position;
         locationIndex = (locationIndex + 1) % locations.Count;
+
+        Vector3 direction = (agent.destination - transform.position).normalized;
+        agent.Move(direction * Time.deltaTime * agent.speed);
     }
+    
     void InitializePatrolRoute()
     {
         foreach (Transform child in patrolRoute)
@@ -65,6 +72,14 @@ public class EnemyController : MonoBehaviour
             }
         }
     }
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Obstacle") || collision.gameObject.CompareTag("Player"))
+        {
+            Vector3 newDestination = transform.position + (transform.position - collision.transform.position).normalized * 10f;
+            agent.destination = newDestination;
+        }
+    }
 
     void OnTriggerEnter(Collider other)
     {
@@ -74,6 +89,7 @@ public class EnemyController : MonoBehaviour
             StartCoroutine(ShootCoroutine());
         }
     }
+
     void OnTriggerExit(Collider other)
     {
         if (other.gameObject.tag == "Player")
@@ -82,6 +98,7 @@ public class EnemyController : MonoBehaviour
             StopAllCoroutines();
         }
     }
+
     IEnumerator ShootCoroutine()
     {
         while (!playerExitedTrigger)
@@ -90,11 +107,11 @@ public class EnemyController : MonoBehaviour
             yield return StartCoroutine(Shoot());
         }
     }
+
     public IEnumerator Shoot()
     {
         yield return new WaitForSeconds(2f);
         Rigidbody clone = Instantiate(bulet, shootPoint.position, transform.rotation);
         clone.velocity = transform.forward * speedBullet * Time.deltaTime;
-
     }
 }

@@ -18,6 +18,12 @@ public class NewPlayer : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         healAndDamage = GameObject.Find("Player").GetComponent<HealAndDamagePlayer>();
     }
+    private void Start()
+    {
+        rb.constraints = RigidbodyConstraints.FreezeRotationX 
+                        | RigidbodyConstraints.FreezeRotationY 
+                        | RigidbodyConstraints.FreezeRotationZ;
+    }
     private void Update()
     {
         life_state.text = healAndDamage.HP.ToString();
