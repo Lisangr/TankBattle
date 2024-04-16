@@ -3,7 +3,7 @@ using UnityEngine;
 public class Fire : MonoBehaviour
 {
     public Rigidbody bulet;
-    public float speed = 500f;
+    public float speed = 5000f;
 
     private float timeBtwShots = .3f;
     private float startTimeBtwShots;

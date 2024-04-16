@@ -1,7 +1,9 @@
-using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 using TMPro;
+using UnityEngine;
 
-public class Player : MonoBehaviour
+public class NewPlayer : MonoBehaviour
 {
     [SerializeField] private float runSpeed = 5f;
     [SerializeField] private float rotationSpeed;
