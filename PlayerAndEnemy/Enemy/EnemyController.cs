@@ -40,7 +40,7 @@ public class EnemyController : MonoBehaviour
     {
         if (locations.Count == 0)
             return;
-        
+
         agent.destination = locations[locationIndex].position;
         locationIndex = (locationIndex + 1) % locations.Count;
     }
